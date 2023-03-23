@@ -1,0 +1,139 @@
+/* ---------------------- */
+/* HTML e Bootstrap reset */
+/* ---------------------- */
+:root {
+  --dark: #615540;
+  --primary1: #119b49;
+  --primary1-rgb: 17, 155, 73;
+  --primary1-hover: #118249;
+  --primary1-border-hover: #10703b;
+  --link: #119b49;
+  --link-rgb: 17, 155, 73;
+  --link-hover: #118249;
+  --primary2: #756b59;
+  --form-components-border: #979797;
+}
+
+html,
+body,
+#root {
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+body {
+  font-size: 22px;
+}
+
+a {
+  color: var(--link);
+  font-weight: 500;
+  text-shadow: 0 0 black;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+body {
+  color: var(--primary2);
+}
+
+img {
+  width: auto\9;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+button {
+  border-radius: 4px;
+}
+
+/* BTN PRIMARY */
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: var(--primary1);
+  border-color: var(--primary1);
+  color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle,
+.btn-primary.focus,
+.btn-primary:focus {
+  background-color: var(--primary1-hover);
+  border-color: var(--primary1-border-hover);
+}
+
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary1-rgb), .5);
+}
+
+/* FORM & INPUTs */
+.form-control,
+.form-select,
+.react-select__control,
+.input-group-text {
+  border-color: var(--form-components-border) !important;
+}
+
+/* BTN LINK */
+.btn-link {
+  color: var(--link);
+  font-weight: 500;
+  text-shadow: 0 0 black;
+}
+
+.btn-link:hover {
+  color: var(--link-hover);
+}
+
+/* NAV PILLS */
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  background-color: var(--primary1);
+}
+
+/* PAGE LINK */
+.page-link {
+  border-color: var(--link);
+  color: var(--link);
+  font-weight: bold;
+}
+
+.page-link:hover {
+  color: var(--link-hover);
+}
+
+.page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(var(--link-rgb), .5);
+}
+
+/* ---------------------- */
+/* Layout                 */
+/* ---------------------- */
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+#routeContent {
+  flex: 1 1 auto;
+  padding-bottom: calc(var(--bs-gutter-x) * .5);
+  padding-top: calc(var(--bs-gutter-x) * .5);
+}

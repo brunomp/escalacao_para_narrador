@@ -1,0 +1,23 @@
+.page-jogo .jogador-card {
+    border: 1px dashed gray;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    margin-bottom: .5rem;
+    background-color: white;
+    cursor: move;
+}
+/* Reservas */
+.page-jogo .jogadores .jogador-card:nth-child(n + 9) {
+    background-color: #ccc;
+}
+.page-jogo .jogador-card .numero {
+    display: inline-block;
+    margin-right: 15px;
+    text-align: center;
+    width: 50px;
+}
+.page-jogo .jogador-card.selecionado {
+    background-color: blue !important;
+    color: white;
+}
