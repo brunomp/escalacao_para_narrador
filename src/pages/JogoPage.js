@@ -150,8 +150,8 @@ export default function JogoPage() {
 
   return (
     <Layout>
-      <div className="flex-grow-1 d-flex flex-wrap" style={{ columnGap: '130px' }}>
-        <div className="flex-grow-1">
+      <div className="d-flex" style={{ columnGap: '20px' }}>
+        <div className="time-container">
           <h2 className="text-center mb-4">
             <Link to={`/times/${mandante?.id}/jogadores`}>{mandante?.nome}</Link>
           </h2>
@@ -190,7 +190,7 @@ export default function JogoPage() {
             )}
           </div>
         </div>
-        <div className="flex-grow-1">
+        <div className="time-container">
           <h2 className="text-center mb-4">
             <Link to={`/times/${adversario?.id}/jogadores`}>{adversario?.nome}</Link>
           </h2>
