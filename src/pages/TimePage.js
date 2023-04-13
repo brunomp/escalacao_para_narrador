@@ -1,25 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react';
 import useBodyClass from '../hooks/body-class';
 import Layout from '../Layout';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import TimeService from '../services/TimeService';
-import Jogador from '../models/Jogador';
 import JogadorService from '../services/JogadorService';
 
-export default function JogadoresPage() {
+export default function TimePage() {
 
   const params = useParams();
   const jogadorNome = useRef();
   const jogadorNumero = useRef();
+  const timeNome = useRef();
   const [time, setTime] = useState();
+  const [timeFoiModificado, setTimeFoiModificado] = useState(false);
   const [jogadores, setJogadores] = useState([]);
 
-  useBodyClass("page-jogadores");
+  useBodyClass("page-time");
 
   useEffect(() => {
     loadTime();
     loadJogadores();
   }, []);
+
+  useEffect(() => {
+    if (time) {
+      timeNome.current.value = time.nome;
+    }
+  }, [time]);
 
   async function loadTime() {
     setTime(await TimeService.getById(params.timeId));
@@ -27,6 +34,15 @@ export default function JogadoresPage() {
 
   async function loadJogadores() {
     setJogadores(await JogadorService.list(params.timeId));
+  }
+
+  async function saveTime(event) {
+    event.preventDefault();
+    let timeModificado = JSON.parse(JSON.stringify(time));
+    timeModificado.nome = timeNome.current.value;
+    await TimeService.save(timeModificado);
+    await loadTime();
+    setTimeFoiModificado(false);
   }
 
   async function addJogador(event) {
@@ -50,8 +66,28 @@ export default function JogadoresPage() {
 
   return (
     <Layout>
-      <div className="flex-grow-1 d-flex flex-column">
-        <h2 className="page-title text-center w-100 mb-5">Jogadores do {time?.nome}</h2>
+      <div className="d-flex flex-column">
+        <div className="w-50 m-auto mt-5 mb-5">
+          <form onSubmit={saveTime} className="row row-cols-auto g-3 align-items-end">
+            <div className="col-10">
+              <input
+                type="text"
+                className="form-control text-uppercase"
+                ref={timeNome}
+                onChange={e => {
+                  setTimeFoiModificado(true);
+                }}
+              />
+            </div>
+            <div className="col-2">
+              <button
+                className="btn btn-primary w-100"
+                type="submit"
+                disabled={timeFoiModificado ? false : true}
+              >Salvar</button>
+            </div>
+          </form>
+        </div>
         <div>
           <div className="text-uppercase w-50 m-auto mb-5">
             <form onSubmit={addJogador} className="row row-cols-auto g-3 align-items-end">

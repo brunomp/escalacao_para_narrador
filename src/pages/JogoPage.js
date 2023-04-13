@@ -153,7 +153,7 @@ export default function JogoPage() {
       <div className="d-flex" style={{ columnGap: '20px' }}>
         <div className="time-container">
           <h2 className="text-center mb-4">
-            <Link to={`/times/${mandante?.id}/jogadores`}>{mandante?.nome}</Link>
+            <Link to={`/times/${mandante?.id}`}>{mandante?.nome}</Link>
           </h2>
           <div className="jogadores">
             {(jogadoresMandante || []).map((jogador, index) =>
@@ -192,7 +192,7 @@ export default function JogoPage() {
         </div>
         <div className="time-container">
           <h2 className="text-center mb-4">
-            <Link to={`/times/${adversario?.id}/jogadores`}>{adversario?.nome}</Link>
+            <Link to={`/times/${adversario?.id}`}>{adversario?.nome}</Link>
           </h2>
           <div className="jogadores">
             {(jogadoresAdversario || []).map((jogador, index) =>

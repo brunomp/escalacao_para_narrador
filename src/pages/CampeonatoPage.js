@@ -90,7 +90,7 @@ export default function CampeonatoPage() {
             <ul className="mt-5">
               {(times).map(time =>
                 <li key={time.id} className="text-uppercase">
-                  <Link to={`/times/${time.id}/jogadores`}>
+                  <Link to={`/times/${time.id}`}>
                     {time.nome}
                   </Link>
                 </li>
